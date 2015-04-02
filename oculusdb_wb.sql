@@ -1,8 +1,8 @@
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: oculusdb
+-- Host: 83.212.126.222    Database: oculus_group1
 -- ------------------------------------------------------
--- Server version	5.6.16
+-- Server version	5.6.21
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `anamnesis`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `anamnesis` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
-  `version` int(11) DEFAULT 0,
+  `version` int(11) DEFAULT '0',
   `patient` varchar(36) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,   
+  `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_anamnesis_patient_idx` (`patient`),
   CONSTRAINT `fk_anamnesis_patient` FOREIGN KEY (`patient`) REFERENCES `patient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -59,7 +59,8 @@ DROP TABLE IF EXISTS `calendarentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `calendarentry` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `title` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `start` datetime DEFAULT NULL,
@@ -79,7 +80,8 @@ DROP TABLE IF EXISTS `diagnosis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `diagnosis` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -111,7 +113,8 @@ DROP TABLE IF EXISTS `drug`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `drug` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -125,7 +128,8 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
@@ -150,7 +154,8 @@ DROP TABLE IF EXISTS `eyeprescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `eyeprescription` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `diagnosis` varchar(36) DEFAULT NULL,
   `ldiopter` decimal(4,2) DEFAULT NULL,
   `rdiopter` decimal(4,2) DEFAULT NULL,
@@ -168,7 +173,8 @@ DROP TABLE IF EXISTS `insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `insurance` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -182,7 +188,8 @@ DROP TABLE IF EXISTS `measurement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `measurement` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `value` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `appointment` varchar(36) DEFAULT NULL,
@@ -214,7 +221,8 @@ DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patient` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
@@ -229,7 +237,7 @@ CREATE TABLE `patient` (
   `socialsecuritynumber` varchar(255) DEFAULT NULL,
   `employer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +265,8 @@ DROP TABLE IF EXISTS `prescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prescription` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `created` datetime DEFAULT NULL,
   `expired` datetime DEFAULT NULL,
   `insurance` varchar(36) DEFAULT NULL,
@@ -278,7 +287,8 @@ DROP TABLE IF EXISTS `prescriptionentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prescriptionentry` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `prescription` varchar(36) DEFAULT NULL,
   `drug` varchar(36) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
@@ -299,7 +309,8 @@ DROP TABLE IF EXISTS `queue`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queue` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -330,7 +341,8 @@ DROP TABLE IF EXISTS `queueentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queueentry` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `queue` varchar(36) DEFAULT NULL,
   `appointment` varchar(36) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
@@ -364,7 +376,8 @@ DROP TABLE IF EXISTS `referral`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `referral` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_referral_appointment_idx` (`appointment`),
@@ -380,7 +393,8 @@ DROP TABLE IF EXISTS `sicknote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sicknote` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
   `insurance` varchar(36) DEFAULT NULL,
@@ -402,11 +416,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `employee` varchar(36) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `fk_user_employee_idx` (`employee`),
   CONSTRAINT `fk_user_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -438,7 +454,8 @@ DROP TABLE IF EXISTS `userright`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userright` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -470,7 +487,8 @@ DROP TABLE IF EXISTS `userrole`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userrole` (
-    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -486,4 +504,4 @@ CREATE TABLE `userrole` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-02 10:17:22
+-- Dump completed on 2015-04-02 12:57:10
