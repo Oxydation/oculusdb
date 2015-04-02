@@ -23,9 +23,10 @@ DROP TABLE IF EXISTS `anamnesis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `anamnesis` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `patient` int(11) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT 0,
+  `patient` varchar(36) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,   
   PRIMARY KEY (`id`),
   KEY `fk_anamnesis_patient_idx` (`patient`),
   CONSTRAINT `fk_anamnesis_patient` FOREIGN KEY (`patient`) REFERENCES `patient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -40,8 +41,8 @@ DROP TABLE IF EXISTS `appointment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `appointment` (
-  `calendarentry` int(11) NOT NULL,
-  `patient` int(11) DEFAULT NULL,
+  `calendarentry` varchar(36) NOT NULL,
+  `patient` varchar(36) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`calendarentry`),
   KEY `fk_appointment_patient_idx` (`patient`),
@@ -58,12 +59,12 @@ DROP TABLE IF EXISTS `calendarentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `calendarentry` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `title` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
-  `employee` int(11) DEFAULT NULL,
+  `employee` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_calendarentry_employee_idx` (`employee`),
   CONSTRAINT `fk_calendarentry_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -78,9 +79,9 @@ DROP TABLE IF EXISTS `diagnosis`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `diagnosis` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
-  `appointment` int(11) DEFAULT NULL,
+  `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_diagnosis_appointment_idx` (`appointment`),
   CONSTRAINT `fk_diagnosis_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -95,7 +96,7 @@ DROP TABLE IF EXISTS `doctor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `doctor` (
-  `employee` int(11) NOT NULL,
+  `employee` varchar(36) NOT NULL,
   `doctornumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_doctor_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -110,7 +111,7 @@ DROP TABLE IF EXISTS `drug`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `drug` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -124,7 +125,7 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `employee` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
@@ -149,8 +150,8 @@ DROP TABLE IF EXISTS `eyeprescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `eyeprescription` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `diagnosis` int(11) DEFAULT NULL,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `diagnosis` varchar(36) DEFAULT NULL,
   `ldiopter` decimal(4,2) DEFAULT NULL,
   `rdiopter` decimal(4,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -167,7 +168,7 @@ DROP TABLE IF EXISTS `insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `insurance` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -181,10 +182,10 @@ DROP TABLE IF EXISTS `measurement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `measurement` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `value` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `appointment` int(11) DEFAULT NULL,
+  `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_measurements_appointment_idx` (`appointment`),
   CONSTRAINT `fk_measurements_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -199,7 +200,7 @@ DROP TABLE IF EXISTS `orthoptist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orthoptist` (
-  `employee` int(11) NOT NULL,
+  `employee` varchar(36) NOT NULL,
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_orthoptist_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -213,7 +214,7 @@ DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patient` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
@@ -239,8 +240,8 @@ DROP TABLE IF EXISTS `patient_insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `patient_insurance` (
-  `patient` int(11) NOT NULL,
-  `insurance` int(11) NOT NULL,
+  `patient` varchar(36) NOT NULL,
+  `insurance` varchar(36) NOT NULL,
   PRIMARY KEY (`patient`,`insurance`),
   KEY `fk_patient_insurance_insurance_idx` (`insurance`),
   CONSTRAINT `fk_patient_insurance_insurance` FOREIGN KEY (`insurance`) REFERENCES `insurance` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -256,11 +257,11 @@ DROP TABLE IF EXISTS `prescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prescription` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `created` datetime DEFAULT NULL,
   `expired` datetime DEFAULT NULL,
-  `insurance` int(11) DEFAULT NULL,
-  `diagnosis` int(11) DEFAULT NULL,
+  `insurance` varchar(36) DEFAULT NULL,
+  `diagnosis` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_prescription_diagnosis_idx` (`diagnosis`),
   KEY `fk_prescription_insurance_idx` (`insurance`),
@@ -277,9 +278,9 @@ DROP TABLE IF EXISTS `prescriptionentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `prescriptionentry` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prescription` int(11) DEFAULT NULL,
-  `drug` int(11) DEFAULT NULL,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `prescription` varchar(36) DEFAULT NULL,
+  `drug` varchar(36) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -298,7 +299,7 @@ DROP TABLE IF EXISTS `queue`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queue` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -312,8 +313,8 @@ DROP TABLE IF EXISTS `queue_employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queue_employee` (
-  `queue` int(11) NOT NULL,
-  `employee` int(11) NOT NULL,
+  `queue` varchar(36) NOT NULL,
+  `employee` varchar(36) NOT NULL,
   PRIMARY KEY (`queue`,`employee`),
   KEY `fk_queue_employee_employee_idx` (`employee`),
   CONSTRAINT `fk_queue_employee_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -329,9 +330,9 @@ DROP TABLE IF EXISTS `queueentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queueentry` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `queue` int(11) DEFAULT NULL,
-  `appointment` int(11) DEFAULT NULL,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `queue` varchar(36) DEFAULT NULL,
+  `appointment` varchar(36) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_queueentry_queue_idx` (`queue`),
@@ -349,7 +350,7 @@ DROP TABLE IF EXISTS `receptionist`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `receptionist` (
-  `employee` int(11) NOT NULL AUTO_INCREMENT,
+  `employee` varchar(36) NOT NULL,
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_receptionist_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -363,8 +364,8 @@ DROP TABLE IF EXISTS `referral`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `referral` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `appointment` int(11) DEFAULT NULL,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
+  `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_referral_appointment_idx` (`appointment`),
   CONSTRAINT `fk_referral_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -379,11 +380,11 @@ DROP TABLE IF EXISTS `sicknote`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sicknote` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `start` datetime DEFAULT NULL,
   `end` datetime DEFAULT NULL,
-  `insurance` int(11) DEFAULT NULL,
-  `diagnosis` int(11) DEFAULT NULL,
+  `insurance` varchar(36) DEFAULT NULL,
+  `diagnosis` varchar(36) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_sicknote_diagnosis_idx` (`diagnosis`),
@@ -401,11 +402,11 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `employee` int(11) DEFAULT NULL,
+  `employee` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_employee_idx` (`employee`),
   CONSTRAINT `fk_user_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -420,8 +421,8 @@ DROP TABLE IF EXISTS `user_userrole`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_userrole` (
-  `user` int(11) NOT NULL,
-  `userrole` int(11) NOT NULL,
+  `user` varchar(36) NOT NULL,
+  `userrole` varchar(36) NOT NULL,
   PRIMARY KEY (`user`,`userrole`),
   KEY `fk_user_userrole_userrole_idx` (`userrole`),
   CONSTRAINT `fk_user_userrole_user` FOREIGN KEY (`user`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -437,7 +438,7 @@ DROP TABLE IF EXISTS `userright`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userright` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -452,8 +453,8 @@ DROP TABLE IF EXISTS `userright_userrole`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userright_userrole` (
-  `userright` int(11) NOT NULL,
-  `userrole` int(11) NOT NULL,
+  `userright` varchar(36) NOT NULL,
+  `userrole` varchar(36) NOT NULL,
   PRIMARY KEY (`userright`,`userrole`),
   KEY `fk_userright_userrole_userrole_idx` (`userrole`),
   CONSTRAINT `fk_userright_userrole_userright` FOREIGN KEY (`userright`) REFERENCES `userright` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -469,7 +470,7 @@ DROP TABLE IF EXISTS `userrole`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userrole` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` varchar(36) NOT NULL DEFAULT 'UUID()',`version` int(11) DEFAULT 0,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
