@@ -42,6 +42,7 @@ DROP TABLE IF EXISTS `appointment`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `appointment` (
   `calendarentry` varchar(36) NOT NULL,
+  `version` int(11) DEFAULT '0',
   `patient` varchar(36) DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`calendarentry`),
@@ -99,6 +100,7 @@ DROP TABLE IF EXISTS `doctor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `doctor` (
   `employee` varchar(36) NOT NULL,
+  `version` int(11) DEFAULT '0',
   `doctornumber` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_doctor_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -208,6 +210,7 @@ DROP TABLE IF EXISTS `orthoptist`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orthoptist` (
   `employee` varchar(36) NOT NULL,
+  `version` int(11) DEFAULT '0',
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_orthoptist_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -363,6 +366,7 @@ DROP TABLE IF EXISTS `receptionist`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `receptionist` (
   `employee` varchar(36) NOT NULL,
+  `version` int(11) DEFAULT '0',
   PRIMARY KEY (`employee`),
   CONSTRAINT `fk_receptionist_employee` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
