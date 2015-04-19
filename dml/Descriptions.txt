@@ -4,5 +4,23 @@ curl "https://www.mockaroo.com/7afa0270/download?count=15&key=376d69d0" > "emplo
 patient.sql: https://www.mockaroo.com/7bbeadc0
 curl "https://www.mockaroo.com/7bbeadc0/download?count=200&key=376d69d0" > "patient.sql"
 
+Attention: some employees could be used multiple times because of the custom dataset!
+------------------------------------------------------------------------------------------
 doctor.sql: https://www.mockaroo.com/b43f4c00
 curl "https://www.mockaroo.com/b43f4c00/download?count=5&key=376d69d0" > "doctor.sql"
+
+orthoptist.sql: https://www.mockaroo.com/be901800
+curl "https://www.mockaroo.com/be901800/download?count=10&key=376d69d0" > "orthoptist.sql"
+
+receptionist.sql: https://www.mockaroo.com/68ff3fe0
+curl "https://www.mockaroo.com/68ff3fe0/download?count=10&key=376d69d0" > "receptionist.sql"
+------------------------------------------------------------------------------------------
+
+drug.sql:  https://www.mockaroo.com/cab580d0
+curl "https://www.mockaroo.com/cab580d0/download?count=300&key=376d69d0" > "drug.sql"
+
+insurance.sql:  https://www.mockaroo.com/2bd0e000
+curl "https://www.mockaroo.com/2bd0e000/download?count=30&key=376d69d0" > "insurance.sql"
+
+user.sql: https://www.mockaroo.com/de3b6f80
+curl "https://www.mockaroo.com/de3b6f80/download?count=20&key=376d69d0" > "user.sql"
