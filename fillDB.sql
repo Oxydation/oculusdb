@@ -5,6 +5,7 @@ SOURCE ./dml/doctor.sql
 SOURCE ./dml/orthoptist.sql
 SOURCE ./dml/receptionist.sql
 SOURCE ./dml/insurance.sql
+SOURCE ./dml/patient_insurance.sql
 SOURCE ./dml/drug.sql
 SOURCE ./dml/user.sql
 SOURCE ./dml/calendarentry.sql

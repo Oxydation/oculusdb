@@ -37,7 +37,7 @@ curl "https://www.mockaroo.com/64aef5d0/download?count=600&key=376d69d0" > "appo
 anamnesis.sql: https://www.mockaroo.com/630d1c20
 curl "https://www.mockaroo.com/630d1c20/download?count=160&key=376d69d0" > "anamnesis.sql"
 
-insurance.sql: https://www.mockaroo.com/c1f10f20
+patient_insurance.sql: https://www.mockaroo.com/c1f10f20
 curl "https://www.mockaroo.com/c1f10f20/download?count=200&key=376d69d0" > "patient_insurance.sql"
 
 queue.sql: https://www.mockaroo.com/1e395aa0
@@ -48,3 +48,5 @@ curl "https://www.mockaroo.com/0787fa70/download?count=20&key=376d69d0" > "queue
 
 queueentry.sql: https://www.mockaroo.com/f192cf40
 curl "https://www.mockaroo.com/f192cf40/download?count=20&key=376d69d0" > "queueentry.sql"
+
+
