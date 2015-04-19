@@ -1,0 +1,8 @@
+employee.sql: https://www.mockaroo.com/7afa0270
+curl "https://www.mockaroo.com/7afa0270/download?count=15&key=376d69d0" > "employee.sql"
+
+patient.sql: https://www.mockaroo.com/7bbeadc0
+curl "https://www.mockaroo.com/7bbeadc0/download?count=200&key=376d69d0" > "patient.sql"
+
+doctor.sql: https://www.mockaroo.com/b43f4c00
+curl "https://www.mockaroo.com/b43f4c00/download?count=5&key=376d69d0" > "doctor.sql"
