@@ -1,4 +1,3 @@
-insert into insurance (id, version, name) values ('217fc3da-970c-4e07-9af8-b3152f530141', 9, 'Viva');
 insert into insurance (id, version, name) values ('0c1d85fc-61f7-4a9d-b82a-173210229a38', 1, 'Zoomzone');
 insert into insurance (id, version, name) values ('8404f679-38dd-4a65-bda9-a0e76ec84fd3', 13, 'Feedmix');
 insert into insurance (id, version, name) values ('b0d41238-8775-4a49-a628-830d47b8b6ea', 9, 'Skidoo');
