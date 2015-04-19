@@ -1,3 +1,6 @@
+Usefull: (SELECT patientId FROM patient ORDER BY RAND() LIMIT 1)
+(select patientId from (SELECT @rownum := @rownum + 1 ROWNUM , patient.* FROM (SELECT @rownum := 0) r, patient) t where rownum = 11)
+
 employee.sql: https://www.mockaroo.com/7afa0270
 curl "https://www.mockaroo.com/7afa0270/download?count=15&key=376d69d0" > "employee.sql"
 
@@ -24,3 +27,24 @@ curl "https://www.mockaroo.com/2bd0e000/download?count=30&key=376d69d0" > "insur
 
 user.sql: https://www.mockaroo.com/de3b6f80
 curl "https://www.mockaroo.com/de3b6f80/download?count=20&key=376d69d0" > "user.sql"
+
+calendarentry.sql: https://www.mockaroo.com/a1017dd0
+curl "https://www.mockaroo.com/a1017dd0/download?count=150&key=376d69d0" > "calendarentry.sql"
+
+appointment.sql: https://www.mockaroo.com/64aef5d0
+curl "https://www.mockaroo.com/64aef5d0/download?count=600&key=376d69d0" > "appointment.sql"
+
+anamnesis.sql: https://www.mockaroo.com/630d1c20
+curl "https://www.mockaroo.com/630d1c20/download?count=160&key=376d69d0" > "anamnesis.sql"
+
+insurance.sql: https://www.mockaroo.com/c1f10f20
+curl "https://www.mockaroo.com/c1f10f20/download?count=200&key=376d69d0" > "patient_insurance.sql"
+
+queue.sql: https://www.mockaroo.com/1e395aa0
+curl "https://www.mockaroo.com/1e395aa0/download?count=20&key=376d69d0" > "queue.sql"
+
+queue_employee.sql: https://www.mockaroo.com/0787fa70
+curl "https://www.mockaroo.com/0787fa70/download?count=20&key=376d69d0" > "queue_employee.sql"
+
+queueentry.sql: https://www.mockaroo.com/f192cf40
+curl "https://www.mockaroo.com/f192cf40/download?count=20&key=376d69d0" > "queueentry.sql"
