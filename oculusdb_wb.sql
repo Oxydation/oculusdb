@@ -223,7 +223,7 @@ CREATE TABLE `eyeprescriptionentry` (
   `base` int(11) DEFAULT NULL,
   `vertexdistance` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_eyeprescriptionentry_eyeprescription_idx` (`diagnosis`),
+  KEY `fk_eyeprescriptionentry_eyeprescription_idx` (`eyeprescription`),
   CONSTRAINT `fk_eyeprescriptionentry_eyeprescription` FOREIGN KEY (`eyeprescription`) REFERENCES `eyeprescription` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
