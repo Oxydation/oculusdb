@@ -142,6 +142,24 @@ CREATE TABLE `drug` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `drugintolerance`
+--
+
+DROP TABLE IF EXISTS `drugintolerance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drugintolerance` (
+  `anamnesis` varchar(36) NOT NULL,
+  `drug` varchar(36) NOT NULL,
+  PRIMARY KEY (`anamnesis`,`drug`),
+  KEY `fk_anamnesis_drug_drug_idx` (`drug`),
+  CONSTRAINT `fk_anamnesis_drug_drug` FOREIGN KEY (`drug`) REFERENCES `drug` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_anamnesis_drug_anamnesis` FOREIGN KEY (`anamnesis`) REFERENCES `anamnesis` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
 -- Table structure for table `employee`
 --
 
@@ -188,6 +206,7 @@ CREATE TABLE `eyeprescription` (
 --
 -- Tabellenstruktur für Tabelle `eyeprescriptionentry`
 --
+
 DROP TABLE IF EXISTS `eyeprescriptionentry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
