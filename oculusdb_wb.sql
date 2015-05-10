@@ -74,6 +74,22 @@ CREATE TABLE `calendarentry` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Tabellenstruktur für Tabelle `disease`
+--
+
+DROP TABLE IF EXISTS `disease`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `disease` (
+  `id` varchar(36) CHARACTER SET utf8mb4 NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `name` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
 -- Table structure for table `diagnosis`
 --
 
@@ -84,10 +100,13 @@ CREATE TABLE `diagnosis` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
   `version` int(11) DEFAULT '0',
   `name` varchar(255) DEFAULT NULL,
-  `appointment` varchar(36) DEFAULT NULL,
+  `appointment` varchar(36) DEFAULT NULL,  
+  `disease` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_diagnosis_appointment_idx` (`appointment`),
-  CONSTRAINT `fk_diagnosis_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_diagnosis_disease_idx` (`disease`),
+  CONSTRAINT `fk_diagnosis_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_diagnosis_disease` FOREIGN KEY (`disease`) REFERENCES `disease` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -158,9 +177,8 @@ DROP TABLE IF EXISTS `eyeprescription`;
 CREATE TABLE `eyeprescription` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
   `version` int(11) DEFAULT '0',
-  `diagnosis` varchar(36) DEFAULT NULL,
-  `ldiopter` decimal(4,2) DEFAULT NULL,
-  `rdiopter` decimal(4,2) DEFAULT NULL,
+  `diagnosis` varchar(36) DEFAULT NULL,  
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_eyeprescription_diagnosis_idx` (`diagnosis`),
   CONSTRAINT `fk_eyeprescription_diagnosis` FOREIGN KEY (`diagnosis`) REFERENCES `diagnosis` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -168,9 +186,31 @@ CREATE TABLE `eyeprescription` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Tabellenstruktur für Tabelle `eyeprescriptionentry`
+--
+DROP TABLE IF EXISTS `eyeprescriptionentry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `eyeprescriptionentry` (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `eyeprescription` varchar(36) DEFAULT NULL,
+  `amblyopia` varchar(100) DEFAULT NULL,
+  `side` varchar(100) DEFAULT NULL,
+  `sphere` decimal(4,2) DEFAULT NULL,
+  `cylinder` decimal(4,2) DEFAULT NULL,
+  `axis` int(11) DEFAULT NULL,
+  `prism` decimal(4,2) DEFAULT NULL,
+  `base` int(11) DEFAULT NULL,
+  `vertexdistance` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_eyeprescriptionentry_eyeprescription_idx` (`diagnosis`),
+  CONSTRAINT `fk_eyeprescriptionentry_eyeprescription` FOREIGN KEY (`eyeprescription`) REFERENCES `eyeprescription` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
 -- Table structure for table `insurance`
 --
-
 DROP TABLE IF EXISTS `insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -303,6 +343,39 @@ CREATE TABLE `prescriptionentry` (
   CONSTRAINT `fk_prescriptionentry_prescription` FOREIGN KEY (`prescription`) REFERENCES `prescription` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
+-- Table structure for table `servicecode`
+--
+DROP TABLE IF EXISTS `servicecode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `servicecode` (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `code` varchar(40) DEFAULT NULL,
+  `description` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `patient_insurance`
+--
+DROP TABLE IF EXISTS `appointment_servicecode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `appointment_servicecode` (
+  `appointment` varchar(36) NOT NULL,
+  `servicecode` varchar(36) NOT NULL,
+  PRIMARY KEY (`appointment`,`servicecode`),
+  KEY `fk_appointment_servicecode_servicecode_idx` (`servicecode`),
+  CONSTRAINT `fk_appointment_servicecode_servicecode` FOREIGN KEY (`servicecode`) REFERENCES `servicecode` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_appointment_servicecode_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `queue`
