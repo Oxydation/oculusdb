@@ -375,6 +375,7 @@ CREATE TABLE `servicecode` (
   `version` int(11) DEFAULT '0',
   `code` varchar(40) DEFAULT NULL,
   `description` varchar(36) DEFAULT NULL,
+  `points` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;

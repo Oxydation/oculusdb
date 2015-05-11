@@ -55,3 +55,5 @@ curl "https://www.mockaroo.com/c35ad710/download?count=160&key=376d69d0" > "diag
 drugintolerance.sql: https://www.mockaroo.com/a041b2b0
 curl "https://www.mockaroo.com/a041b2b0/download?count=200&key=376d69d0" > "drugintolerance.sql"
 
+servicecode.sql: https://www.mockaroo.com/e0fa62c0
+curl "https://www.mockaroo.com/e0fa62c0/download?count=21&key=376d69d0" > "servicecode.sql"
