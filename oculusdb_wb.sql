@@ -590,6 +590,25 @@ CREATE TABLE `userrole` (
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `finding`
+--
+DROP TABLE IF EXISTS `finding`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `finding` (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `finding` varchar(1024) DEFAULT NULL,
+  `appointment` varchar(36) DEFAULT NULL,  
+  PRIMARY KEY (`id`),
+  KEY `fk_finding_appointment_idx` (`appointment`),
+  CONSTRAINT `fk_finding_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
