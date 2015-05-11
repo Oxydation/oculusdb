@@ -49,8 +49,8 @@ curl "https://www.mockaroo.com/0787fa70/download?count=20&key=376d69d0" > "queue
 queueentry.sql: https://www.mockaroo.com/f192cf40
 curl "https://www.mockaroo.com/f192cf40/download?count=20&key=376d69d0" > "queueentry.sql"
 
-diagnosis.sql: https://www.mockaroo.com/c35ad710
-curl "https://www.mockaroo.com/c35ad710/download?count=160&key=376d69d0" > "diagnosis.sql"
+diagnosis.sql: https://www.mockaroo.com/0ea5de30
+curl "https://www.mockaroo.com/0ea5de30/download?count=20&key=376d69d0" > "diagnosis.sql"
 
 drugintolerance.sql: https://www.mockaroo.com/a041b2b0
 curl "https://www.mockaroo.com/a041b2b0/download?count=200&key=376d69d0" > "drugintolerance.sql"
