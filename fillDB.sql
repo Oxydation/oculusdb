@@ -16,3 +16,5 @@ SOURCE ./dml/queue_employee.sql
 SOURCE ./dml/queueentry.sql
 SOURCE ./dml/diagnosis.sql
 SOURCE ./dml/drugintolerance.sql
+SOURCE ./dml/servicecode.sql
+SOURCE ./dml/disease.sql
