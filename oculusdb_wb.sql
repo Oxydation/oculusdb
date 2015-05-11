@@ -374,7 +374,7 @@ CREATE TABLE `servicecode` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
   `version` int(11) DEFAULT '0',
   `code` varchar(40) DEFAULT NULL,
-  `description` varchar(36) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT NULL,
   `points` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
