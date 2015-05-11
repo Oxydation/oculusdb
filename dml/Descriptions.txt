@@ -57,3 +57,7 @@ curl "https://www.mockaroo.com/a041b2b0/download?count=200&key=376d69d0" > "drug
 
 servicecode.sql: https://www.mockaroo.com/e0fa62c0
 curl "https://www.mockaroo.com/e0fa62c0/download?count=21&key=376d69d0" > "servicecode.sql"
+
+disease.sql: https://www.mockaroo.com/b28bae70
+curl "https://www.mockaroo.com/b28bae70/download?count=80&key=376d69d0" > "disease.sql"
+
