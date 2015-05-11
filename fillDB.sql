@@ -15,3 +15,4 @@ SOURCE ./dml/queue.sql
 SOURCE ./dml/queue_employee.sql
 SOURCE ./dml/queueentry.sql
 SOURCE ./dml/diagnosis.sql
+SOURCE ./dml/drugintolerance.sql
