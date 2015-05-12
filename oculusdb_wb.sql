@@ -274,7 +274,7 @@ CREATE TABLE `measuremententry` (
   `value` double DEFAULT '0',
   `unit` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_measuremententry_measurement_idx` (`measuremet`),
+  KEY `fk_measuremententry_measurement_idx` (`measurement`),
   CONSTRAINT `fk_measuremententry_measurement` FOREIGN KEY (`measurement`) REFERENCES `measurement` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
