@@ -184,8 +184,6 @@ insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis 
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), '927ea6e8-b573-49b4-8fb8-1de660fe3a68');
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), '10547acb-53b7-406f-bdff-727685243aa9');
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), 'ec6cc0fc-781e-46c4-b3a4-db56f1d6229e');
-insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), 'cfeadd0d-22d0-44dd-a842-64453e866c42');
-insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), 'd3f6f81d-7eab-4b4f-aef2-2f69397c3c74');
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), '1498d967-e660-455a-8cb0-1671cc35175a');
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), 'd45c959f-8d11-46d6-b09e-4975f0fa4c99');
 insert into drugintolerance (anamnesis, drug) values ((SELECT id FROM anamnesis ORDER BY RAND() LIMIT 1), '8f0b8cbd-a717-4608-bfa9-64f57d1d0a3d');
