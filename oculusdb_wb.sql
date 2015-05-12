@@ -621,7 +621,7 @@ DROP TABLE IF EXISTS `finding`;
 CREATE TABLE `finding` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
   `version` int(11) DEFAULT '0',
-  `finding` varchar(1024) DEFAULT NULL,
+  `description` varchar(1024) DEFAULT NULL,
   `appointment` varchar(36) DEFAULT NULL,  
   PRIMARY KEY (`id`),
   KEY `fk_finding_appointment_idx` (`appointment`),
