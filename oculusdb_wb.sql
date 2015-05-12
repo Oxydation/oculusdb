@@ -251,12 +251,31 @@ DROP TABLE IF EXISTS `measurement`;
 CREATE TABLE `measurement` (
   `id` varchar(36) NOT NULL DEFAULT 'UUID()',
   `version` int(11) DEFAULT '0',
-  `value` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `appointment` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_measurements_appointment_idx` (`appointment`),
   CONSTRAINT `fk_measurements_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `measuremententry`
+--
+
+DROP TABLE IF EXISTS `measuremententry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `measuremententry` (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `measurement` varchar(36) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `value` double DEFAULT '0',
+  `unit` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_measuremententry_measurement_idx` (`measuremet`),
+  CONSTRAINT `fk_measuremententry_measurement` FOREIGN KEY (`measurement`) REFERENCES `measurement` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
