@@ -70,3 +70,6 @@ INSURANCE_STATEMENT: (SELECT p_t.insurance FROM diagnosis dia INNER JOIN appoint
 
 prescriptionentry.sql: https://www.mockaroo.com/b02cd6c0
 curl "https://www.mockaroo.com/b02cd6c0/download?count=300&key=376d69d0" > "prescriptionentry.sql"
+
+eyeprescription.sql: https://www.mockaroo.com/4530a720
+curl "https://www.mockaroo.com/4530a720/download?count=100&key=376d69d0" > "eyeprescription.sql"

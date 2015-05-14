@@ -21,3 +21,4 @@ SOURCE ./dml/servicecode.sql
 SOURCE ./dml/appointment_servicecode.sql
 SOURCE ./dml/prescription.sql
 SOURCE ./dml/prescriptionentry.sql
+SOURCE ./dml/eyeprescription.sql
