@@ -61,3 +61,5 @@ curl "https://www.mockaroo.com/e0fa62c0/download?count=21&key=376d69d0" > "servi
 disease.sql: https://www.mockaroo.com/b28bae70
 curl "https://www.mockaroo.com/b28bae70/download?count=80&key=376d69d0" > "disease.sql"
 
+appointment_servicecode.sql: https://www.mockaroo.com/df443e10
+curl "https://www.mockaroo.com/df443e10/download?count=120&key=376d69d0" > "appointment_servicecode.sql"

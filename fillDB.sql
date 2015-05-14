@@ -18,3 +18,4 @@ SOURCE ./dml/disease.sql
 SOURCE ./dml/diagnosis.sql
 SOURCE ./dml/drugintolerance.sql
 SOURCE ./dml/servicecode.sql
+SOURCE ./dml/appointment_servicecode.sql
