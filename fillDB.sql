@@ -19,3 +19,5 @@ SOURCE ./dml/diagnosis.sql
 SOURCE ./dml/drugintolerance.sql
 SOURCE ./dml/servicecode.sql
 SOURCE ./dml/appointment_servicecode.sql
+SOURCE ./dml/prescription.sql
+SOURCE ./dml/prescriptionentry.sql

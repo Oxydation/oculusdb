@@ -63,3 +63,10 @@ curl "https://www.mockaroo.com/b28bae70/download?count=80&key=376d69d0" > "disea
 
 appointment_servicecode.sql: https://www.mockaroo.com/df443e10
 curl "https://www.mockaroo.com/df443e10/download?count=120&key=376d69d0" > "appointment_servicecode.sql"
+
+prescription.sql: https://www.mockaroo.com/ee7172c0
+curl "https://www.mockaroo.com/ee7172c0/download?count=80&key=376d69d0" > "prescription.sql"
+INSURANCE_STATEMENT: (SELECT p_t.insurance FROM diagnosis dia INNER JOIN appointment app ON dia.appointment = app.calendarentry INNER JOIN patient pat ON app.patient = pat.id INNER JOIN patient_insurance p_t ON p_t.patient = pat.id WHERE dia.id = "{diagnosis}" ORDER BY RAND() LIMIT 1)
+
+prescriptionentry.sql: https://www.mockaroo.com/b02cd6c0
+curl "https://www.mockaroo.com/b02cd6c0/download?count=300&key=376d69d0" > "prescriptionentry.sql"
