@@ -201,7 +201,7 @@ CREATE TABLE `eyeprescription` (
   PRIMARY KEY (`id`),
   KEY `fk_eyeprescription_diagnosis_idx` (`diagnosis`),
   KEY `fk_eyeprescription_patient_idx` (`patient`),
-  CONSTRAINT `fk_eyeprescription_patient` FOREIGN KEY (`patient`) REFERENCES `diagnosis` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_eyeprescription_patient` FOREIGN KEY (`patient`) REFERENCES `patient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_eyeprescription_diagnosis` FOREIGN KEY (`diagnosis`) REFERENCES `diagnosis` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
