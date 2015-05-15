@@ -352,11 +352,14 @@ CREATE TABLE `prescription` (
   `expired` datetime DEFAULT NULL,
   `insurance` varchar(36) DEFAULT NULL,
   `diagnosis` varchar(36) DEFAULT NULL,
+  `patient` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_prescription_diagnosis_idx` (`diagnosis`),
   KEY `fk_prescription_insurance_idx` (`insurance`),
+  KEY `fk_prescription_patient_idx` (`patient`),
   CONSTRAINT `fk_prescription_diagnosis` FOREIGN KEY (`diagnosis`) REFERENCES `diagnosis` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_prescription_insurance` FOREIGN KEY (`insurance`) REFERENCES `insurance` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_prescription_insurance` FOREIGN KEY (`insurance`) REFERENCES `insurance` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_prescription_patient` FOREIGN KEY (`patient`) REFERENCES `patient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -615,6 +618,7 @@ CREATE TABLE `userrole` (
 --
 -- Table structure for table `finding`
 --
+
 DROP TABLE IF EXISTS `finding`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -627,6 +631,38 @@ CREATE TABLE `finding` (
   KEY `fk_finding_appointment_idx` (`appointment`),
   CONSTRAINT `fk_finding_appointment` FOREIGN KEY (`appointment`) REFERENCES `appointment` (`calendarentry`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `workinghours`
+--
+
+DROP TABLE IF EXISTS workinghours;
+CREATE TABLE workinghours (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `employee` varchar(36) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_workinghours_employee_idx` (`employee`),
+  CONSTRAINT `fk_workingday_employee_idx` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table ´workingday´
+--
+
+drop table if exists workingday;
+CREATE TABLE `workingday` (
+  `id` varchar(36) NOT NULL DEFAULT 'UUID()',
+  `version` int(11) DEFAULT '0',
+  `dayofweek` varchar(36) DEFAULT NULL,
+  `start` datetime DEFAULT NULL,
+  `end` datetime DEFAULT NULL,
+  `workinghours` varchar(36) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_workingday_workinghours_idx` (`workinghours`),
+  CONSTRAINT `fk_workingday_workinghours_idx` FOREIGN KEY (`workinghours`) REFERENCES `workinghours` (`id`) ON DELETE NO Action ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
