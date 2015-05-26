@@ -320,7 +320,12 @@ CREATE TABLE `patient` (
   `city` varchar(255) DEFAULT NULL,
   `socialsecuritynumber` varchar(255) DEFAULT NULL,
   `employer` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `doctor` varchar(36) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_patient_doctor_idx` (`doctor`),
+  CONSTRAINT `fk_patient_doctor` FOREIGN KEY (`doctor`) REFERENCES `doctor` (`employee`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
