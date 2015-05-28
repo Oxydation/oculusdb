@@ -598,3 +598,4 @@ insert into appointment (calendarentry, version, patient, status) values ('9e769
 insert into appointment (calendarentry, version, patient, status) values ('9e8fcabb-16c6-4861-9ef4-438273835e2c', 1, (SELECT id FROM patient ORDER BY RAND() LIMIT 1), 'PENDING');
 insert into appointment (calendarentry, version, patient, status) values ('9ef0e30b-ca76-4982-aace-2c0092f4484c', 7, (SELECT id FROM patient ORDER BY RAND() LIMIT 1), 'EXAMINATION_FINISHED');
 insert into appointment (calendarentry, version, patient, status) values ('9ef7fc1d-8f50-48fb-944e-5c52607e85e1', 5, (SELECT id FROM patient ORDER BY RAND() LIMIT 1), 'EXAMINATION_ACTIVE');
+insert into appointment (calendarentry, version, patient, status) values ('9ef7fc1d-8f50-48fb-944e-5c526asdf123', 5, '75d2bf2b-04df-493c-baa5-29cdffffffff', 'PENDING');
