@@ -73,3 +73,9 @@ curl "https://www.mockaroo.com/b02cd6c0/download?count=300&key=376d69d0" > "pres
 
 eyeprescription.sql: https://www.mockaroo.com/4530a720
 curl "https://www.mockaroo.com/4530a720/download?count=100&key=376d69d0" > "eyeprescription.sql"
+
+workinghours.sql: https://www.mockaroo.com/814f5540
+curl "https://www.mockaroo.com/814f5540/download?count=20&key=376d69d0" > "workinghours.sql"
+
+workingday.sql: https://www.mockaroo.com/ca742940
+curl "https://www.mockaroo.com/ca742940/download?count=20&key=376d69d0" > "workingday.sql"

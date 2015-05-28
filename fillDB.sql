@@ -22,5 +22,7 @@ SOURCE ./dml/appointment_servicecode.sql
 SOURCE ./dml/prescription.sql
 SOURCE ./dml/prescriptionentry.sql
 SOURCE ./dml/eyeprescription.sql
+SOURCE ./dml/workinghours.sql
+SOURCE ./dml/workingday.sql
 
 SOURCE ./dml/quickfix.sql
