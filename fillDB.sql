@@ -10,6 +10,7 @@ SOURCE ./dml/drug.sql
 SOURCE ./dml/user.sql
 SOURCE ./dml/calendarentry.sql
 SOURCE ./dml/appointment.sql
+SOURCE ./dml/quickfix.sql
 SOURCE ./dml/anamnesis.sql
 SOURCE ./dml/queue.sql
 SOURCE ./dml/queue_employee.sql
@@ -24,5 +25,3 @@ SOURCE ./dml/prescriptionentry.sql
 SOURCE ./dml/eyeprescription.sql
 SOURCE ./dml/workinghours.sql
 SOURCE ./dml/workingday.sql
-
-SOURCE ./dml/quickfix.sql
