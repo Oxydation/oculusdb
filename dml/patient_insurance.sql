@@ -198,3 +198,5 @@ insert into patient_insurance (patient, insurance) values ('fd33b59d-2346-4828-b
 insert into patient_insurance (patient, insurance) values ('fd964f91-1833-433c-90df-912c0fb18178', (SELECT id FROM insurance ORDER BY RAND() LIMIT 1));
 insert into patient_insurance (patient, insurance) values ('ffb57f6f-c8cb-480f-8a51-06e8cc753862', (SELECT id FROM insurance ORDER BY RAND() LIMIT 1));
 insert into patient_insurance (patient, insurance) values ('ffd8e398-b86d-4c91-83d6-1edd31c407bc', (SELECT id FROM insurance ORDER BY RAND() LIMIT 1));
+insert into patient_insurance (patient, insurance) values ('75d2bf2b-04df-493c-baa5-29cdffffffff', '270e044d-f76b-4f06-a80c-63fb133079e8');
+insert into patient_insurance (patient, insurance) values ('75d2bf2b-04df-493c-baa5-29cdffffffff', '3cb5df9b-f272-4ece-a26e-157cbef5e78b');
